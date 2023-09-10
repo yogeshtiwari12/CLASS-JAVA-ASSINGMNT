@@ -1,0 +1,172 @@
+import java.sql.SQLOutput;
+import java.util.Scanner;
+
+
+public class Main {
+    public static void main(String[] args) {
+        int totalseats = 20;
+        Scanner yt = new Scanner(System.in);
+        System.out.println("Welcome in set booking system :");
+
+
+        System.out.println("" +
+                "1.  A to D \n" +
+                "2.  A to C \n" +
+                "3.  A to B \n" +
+                "4.  B to C \n" +
+                "5.  B to D \n" +
+                "6.  C to D");
+
+        System.out.print("enter routes No for booking seats : ");
+
+
+        while (totalseats > 0) {
+            int seats;
+            int choices = yt.nextInt();
+            System.out.println();
+            int tseatbooked = 0;
+            String ch;
+            totalseats = 50;
+
+
+            switch (choices) {
+                case 1:
+
+                    System.out.print("Enter seats between routes A to D : ");
+                    seats = yt.nextInt();
+                    tseatbooked += seats;
+                    totalseats -= seats;
+
+
+                    if(tseatbooked>=50) {
+                        System.out.println("thanks"+totalseats);
+                        break;
+                    }
+                    System.out.println("Seats left  : "+totalseats);
+                    System.out.print("Do you want to book more tickets (Y/N): ");
+                    ch = yt.next();
+                    System.out.print("\n");
+                    if (ch.equals("n") ) {
+                     break;
+                    }
+
+                case 2:
+
+                    System.out.print("Enter seats between routes A to C : ");
+                    seats = yt.nextInt();
+                    tseatbooked += seats;
+                    totalseats -= seats;
+
+
+
+                    if(tseatbooked>=50) {
+                        System.out.println("thanks");
+                        break;
+                    }
+                    System.out.println("Seats left  : "+totalseats);
+                    System.out.print("Do you want to book more tickets (Y/N): ");
+                    ch = yt.next();
+                    System.out.print("\n");
+                    if (ch.equals("n")) {
+                        System.out.println("thanks");
+                        break;
+
+                    }
+
+                case 3:
+                    System.out.print("Enter seats between routes A to B : ");
+                    seats = yt.nextInt();
+                    System.out.print("\n");
+                    tseatbooked += seats;
+                    totalseats -= seats;
+
+
+
+
+                    if(tseatbooked>=50) {
+                        System.out.println("thanks");
+                        break;
+                    }
+                    System.out.println("Seats left  : "+totalseats);
+                    System.out.print("Do you want to book more tickets (Y/N): ");
+                    ch = yt.next();
+                    System.out.print("\n");
+                    if (ch.equals("n")) {
+                        System.out.println("thanks");
+                        break;
+
+                    }
+
+                case 4:
+                    System.out.print("Enter seats between routes B to C : ");
+                    seats = yt.nextInt();
+                    tseatbooked += seats;
+                    totalseats -= seats;
+
+
+
+
+                    if(tseatbooked>=50) {
+                        System.out.println("thanks");
+                        break;
+                    }
+                    System.out.println("Seats left  : "+totalseats);
+                    System.out.print("Do you want to book more tickets (Y/N): ");
+                    ch = yt.next();
+                    System.out.print("\n");
+                    if (ch.equals("n")) {
+                        break;
+
+                    }
+
+                case 5:
+
+
+                    if(tseatbooked>=50) {
+                        System.out.println("thanks");
+                        break;
+                    }
+                    System.out.print("Enter seats between routes B to D : ");
+                    seats = yt.nextInt();
+                    tseatbooked += seats;
+                    totalseats -= seats;
+
+                    System.out.println("Seats left  : "+totalseats);
+                    System.out.print("Do you want to book more tickets (Y/N): ");
+                    ch = yt.next();
+                    System.out.print("\n");
+                    if (ch.equals("n")) {
+                        System.out.println("thanks");
+                        break;
+
+                    }
+
+                case 6:
+
+                    if(tseatbooked>=50) {
+                        System.out.println("thanks");
+                        break;
+                    }
+                    System.out.println("Seats left  : "+totalseats);
+                    System.out.print("Enter seats between routes C to D : ");
+                    seats = yt.nextInt();
+                    tseatbooked += seats;
+                    totalseats -= seats;
+
+                    System.out.println("Thanks for booking seats.");
+                    break;
+
+                default:
+                    System.out.println("invalid input try agian later : ");
+            }
+
+            if (tseatbooked >= 50) {
+                System.out.println("All seats have been booked.");
+                System.out.println("totall seats booked : "+tseatbooked);
+
+                break;
+            }
+            System.out.println("totall seats booked : "+tseatbooked);
+        }
+    }
+}
