@@ -1,0 +1,128 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+
+
+        Scanner yt = new Scanner(System.in);
+        int a = 100;
+        int b = 100;
+        int c = 100;
+
+        int aprice = 5;
+        int bprice = 6;
+        int cprice = 10;
+
+
+        System.out.println("Available stock of A : " + a);
+        System.out.println("Available stock of B : " + b);
+        System.out.println("Available stock of C : " + c);
+
+        System.out.println();
+        System.out.println("Enter your choice :\n" +
+                "1.A \n" +
+                "2.B\n" +
+                "3.C");
+
+        int choice = yt.nextInt();
+        int b1 = 0;
+        int b2 = 0;
+        int b3 = 0;
+//        int asum = a;
+
+        while (true) {
+            switch (choice) {
+                case 1:
+
+//                System.out.println("Quantity left for a : "+asum);
+                    System.out.println();
+                    System.out.print("Enter Quantity A : ");
+                    int aqty = yt.nextInt();
+                    System.out.println();
+
+                    int sum = a - (aqty * aprice);
+                    if(aqty*aprice>a){
+                        System.out.println("error ");
+                        System.out.println("try again later : ");
+                    }
+                    else {
+
+                        System.out.println("Toatal you Bought : " + aqty * aprice);
+                        b1 = aqty*aprice;
+                        System.out.println("Quatity left : " + sum);
+                        System.out.println();
+                    }
+                    yt.nextLine();
+                    System.out.print("Do you want to go another product : ");
+                    String run = yt.nextLine();
+                    if (run.equals("no")) {
+                        System.out.println("thanks");
+                        break;
+                    }
+
+
+                case 2:
+                    System.out.println();
+                    System.out.print("Enter Quantity B : ");
+                    int bqty = yt.nextInt();
+                    int sum2 = b - (bqty * bprice);
+                    if(bqty * bprice>b){
+                        System.out.println("Error ");
+                        System.out.println("Try again later : ");
+                    }
+                    else {
+
+                        System.out.println("Toatal you Bought : " + bqty * bprice);
+                        b2 =  bqty*bprice;
+                        System.out.println("Quatity left : " + sum2);
+                        System.out.println();
+                    }
+                    yt.nextLine();
+
+                    System.out.print("Do you want to go another product : ");
+                    run = yt.nextLine();
+                    if (run.equals("no")) {
+                        System.out.println("thanks");
+                        break;
+                    }
+                case 3:
+                    System.out.println();
+                    System.out.print("Enter Quantity C : ");
+                    int cqty = yt.nextInt();
+                    int sum3 = a - (cqty * cprice);
+                    if(cqty*cprice>c){
+                        System.out.println("Error");
+                    }
+                    else {
+
+                        System.out.println("Toatal you Bought : " + cqty * cprice);
+                        System.out.println("Quatity left : " + sum3);
+                        b3 = cqty*cprice;
+//
+                    }
+//                    yt.nextLine();
+//
+//                    System.out.print("Do you want to go another product : ");
+//                    run = yt.nextLine();
+//                    if (run.equals("no")) {
+//                        System.out.println("thanks");
+                        break;
+                default:
+                    System.out.println("invalid input try again : ");
+            }
+            System.out.println("**********************************");
+            System.out.println("You have to pay : "+(int)(b1+b2+b3)+" ");
+            break;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
