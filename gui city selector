@@ -1,0 +1,85 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.*;
+class Combobox implements ActionListener{
+JFrame fr;
+JComboBox cb1,cb2,cb3;
+
+
+DefaultComboBoxModel up,mp,pun;
+    Combobox(){
+        fr = new JFrame("welcome to gla");
+//        fr.setBounds(500,600,100,50);
+        fr.setLayout(null);
+
+        String state[] = {"UP", "MP", "PUN"};
+        cb1 = new JComboBox<>(state);
+        cb1.setBounds(30, 50, 100, 50);
+        cb1.addActionListener(this);
+        fr.add(cb1);
+
+        up = new DefaultComboBoxModel<>();
+        mp = new DefaultComboBoxModel<>();
+        pun = new DefaultComboBoxModel<>();
+
+
+        up.addElement("Varansi");
+        up.addElement("Bareli");
+        up.addElement("Mathura");
+        up.addElement("Agra");
+        up.addElement("Etawah");
+
+        mp.addElement("Bhind");
+        mp.addElement("Guna");
+        mp.addElement("Datiya");
+        mp.addElement("Indore");
+        mp.addElement("Gwalior");
+
+
+        pun.addElement("Sangroor");
+        pun.addElement("Jalandhar");
+        pun.addElement("Bahadurgad");
+        pun.addElement("Chandigad");
+        pun.addElement("Hariyana");
+
+
+        cb2 = new JComboBox<>();
+//        cb1.setBounds(30,50,100,50);
+        cb2.setBounds(30,150,100,50);
+//        fr.add(cb1);
+        fr.add(cb2);
+
+        cb1.addActionListener(this);
+        fr.add(cb1);
+        fr.add(cb2);
+        fr.setSize(300,300);
+        fr.setVisible(true);
+
+
+
+
+    }
+
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+      if(e.getSource()==cb1){
+          String  city = (String) cb1.getSelectedItem();
+
+          if(city.equalsIgnoreCase("UP")){
+              cb2.setModel(up);
+          }
+          else if (city.equalsIgnoreCase("MP")) {
+              cb2.setModel(mp);
+          }
+          else if (city.equalsIgnoreCase("PUN")) {
+              cb2.setModel(pun);
+          }
+      }
+    }
+
+    public static void main(String[] args) {
+        Combobox yt = new Combobox();
+
+    }
+}
