@@ -1,0 +1,27 @@
+public class Solution {
+    public string ReverseWords(string s) {
+    // Split each word by white space.
+         string[] words = s.Split(" ");
+    
+    // Iterate trought each word and switch them with the reversed  one.
+    for (int i = 0; i < words.Length; i++)
+    {
+        // Split each character in word.
+        char[] chars = words[i].ToCharArray();
+        int l = 0, h = chars.Length - 1;
+        while (l < h)
+        {
+            // Reverse the chars.
+            (chars[l], chars[h]) = (chars[h], chars[l]);
+            l++;
+            h--;
+        }
+
+        // Switch the word with the reversed one.
+        words[i] = new string(chars);
+    }
+
+    // Join the word array and return it as string.
+    return String.Join(" ", words);
+    }
+}
