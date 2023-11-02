@@ -1,0 +1,168 @@
+import javax.swing.*;
+import java.awt.event.ActionListener;
+import java.sql.*;
+import java.util.Scanner;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionEvent;
+public class Main implements ActionListener {
+    JLabel l1,l2,l3,l4;
+    JTextField t1,t2,t3,t4;
+
+    JButton b1,b2;
+
+    Main(){
+
+
+
+        JFrame jf = new JFrame();
+        jf.setSize(500,600);
+        jf.setVisible(true);
+        jf.setLayout(null);
+
+        l1 = new JLabel("Enter Roll No : ");
+        l1.setBounds(100,140,150,20);
+        jf.add(l1);
+
+
+
+        t1 = new JTextField("");
+        t1.setBounds(300,135,100,25);
+        jf.add(t1);
+
+
+        b1 = new JButton("SUBMIT");
+        b1.setBounds(200,230,100,30);
+        jf.add(b1);
+
+        b1.addActionListener(this);
+
+
+
+        l2 = new JLabel("NAME      :");
+        l2.setBounds(100, 400, 150, 20);
+        jf.add(l2);
+
+        t2 = new JTextField("");
+        t2.setBounds(200, 395, 100, 25);
+        jf.add(t2);
+
+
+        l3 = new JLabel("ROLL NO  : ");
+        l3.setBounds(100, 470, 150, 20);
+        jf.add(l3);
+
+        t3 = new JTextField("");
+        t3.setBounds(200, 470, 100, 25);
+        jf.add(t3);
+
+
+        l4 = new JLabel("COURSE  : ");
+        l4.setBounds(100, 540, 150, 20);
+        jf.add(l4);
+
+        t4 = new JTextField("");
+        t4.setBounds(200, 540, 100, 25);
+        jf.add(t4);
+
+        l4 = new JLabel("CPI            : ");
+        l4.setBounds(100, 610, 150, 20);
+        jf.add(l4);
+
+        t4 = new JTextField("");
+        t4.setBounds(200, 610, 100, 25);
+        jf.add(t4);
+
+
+
+
+
+
+    }
+
+
+    public static void main(String[] args) {
+          Main m = new Main();
+        try {
+            Scanner yt = new Scanner(System.in);
+
+            Class.forName("com.mysql.jdbc.Driver"); // Use the correct JDBC driver class
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/my1", "root", "root");
+            PreparedStatement ps = cn.prepareStatement("insert into mytable values(?,?,?,?)");
+
+            System.out.println("1.For insert data into database ");
+            System.out.println("2.For search data into database ");
+            System.out.println("3.Enter for delete data from table ");
+
+
+            char ch = yt.next().charAt(0);
+            if(ch=='1') {
+                yt.nextLine();
+                System.out.print("Enter your name: ");
+                String name = yt.nextLine();
+                System.out.print("Enter your roll no: ");
+                int rollno = yt.nextInt();
+                yt.nextLine(); // Consume the newline character
+                System.out.print("Enter your branch: ");
+
+
+                String branch = yt.nextLine();
+                System.out.print("Enter your cpi: ");
+                double cpi = yt.nextDouble();
+
+                ps.setString(1, name);
+                ps.setInt(2, rollno);
+                ps.setString(3, branch);
+                ps.setDouble(4, cpi);
+                ps.executeUpdate();
+                cn.close();
+                System.out.println("Data saved to the database !!!");
+            }
+
+
+            else if(ch=='2') {
+                System.out.print("Enter roll no : ");
+                ps = cn.prepareStatement("select * from mytable where rollno = ?");
+                ps.setInt(1,yt.nextInt());
+                ps.executeQuery();
+                ResultSet rs = ps.getResultSet();
+
+                if(rs.next()){
+                    System.out.println("found with data ");
+                    System.out.println("**********************************\n");
+                    System.out.println("Name : "+rs.getString("name"));
+                    System.out.println("Roll no : "+rs.getInt("rollno"));
+                    System.out.println("Branch : "+rs.getString("branch"));
+                    System.out.println("Cpi : "+rs.getFloat("cpi"));
+
+                }
+                else{
+                    System.out.println("not found");
+                }
+            }
+
+            else if (ch=='3') {
+
+                System.out.print("Enter Name : ");
+                ps = cn.prepareStatement("DELETE FROM mytable WHERE name = ?");
+                yt.nextLine();
+                ps.setString(1,yt.nextLine());
+                ps.executeUpdate();
+                System.out.println("Deleted succesfully : ");
+
+            }
+
+        }
+        catch (Exception e) {
+            System.out.println(e);
+        }
+   }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+  if(e.getSource()==b1){
+      String s1 =  t1.getText();
+
+
+  }
+    }
+}
