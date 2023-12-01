@@ -2,13 +2,12 @@ A subarray is a continuous part of array.
 
 Yarik recently found an array a
  of n
- elements and became very interested in finding the maximum sum of a non empty subarray. However, Yarik doesn't like consecutive integers with the same parity, so the subarray he chooses must have alternating parities for adjacent elements.
+ elements and became very interested in finding the maximum sum of a non empty subarray. However, Yarik doesn't like consecutive integers with the same parity,
+so the subarray he chooses must have alternating parities for adjacent elements.
 
 For example, [1,2,3]
  is acceptable, but [1,2,4]
- is not, as 2
- and 4
- are both even and adjacent.
+ is not, as 2 and 4 are both even and adjacent.
 
 You need to help Yarik by finding the maximum sum of such a subarray.
 
